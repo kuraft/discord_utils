@@ -8,14 +8,14 @@ RUN --mount=type=cache,target=${WORKDIR}/target/ \
     --mount=type=cache,target=/usr/local/cargo/registry/
 
 RUN cargo zigbuild --release --target x86_64-unknown-linux-gnu
-RUN cargo install --path .
+RUN strip target/x86_64-unknown-linux-gnu/release/discord_utils -o discord_utils
 
 # 実行
-FROM gcr.io/distroless/static:nonroot
+FROM gcr.io/distroless/static-debian12:nonroot
 
 WORKDIR /app
-COPY --from=builder /usr/local/cargo/bin/discord_utils /app/
+COPY --from=builder /app/discord_utils /app/discord_utils
 
 USER nonroot
 
-CMD ["/app/discord_utils"]
+ENTRYPOINT ["/app/discord_utils"]
