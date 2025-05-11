@@ -11,11 +11,10 @@ RUN cargo zigbuild --release --target x86_64-unknown-linux-gnu
 RUN strip target/x86_64-unknown-linux-gnu/release/discord_utils -o discord_utils
 
 # 実行
-FROM gcr.io/distroless/static-debian12:nonroot
+FROM gcr.io/distroless/cc-debian12:nonroot
 
-WORKDIR /app
-COPY --from=builder /app/discord_utils /app/discord_utils
+COPY --from=builder /app/discord_utils /
 
 USER nonroot
 
-ENTRYPOINT ["/app/discord_utils"]
+ENTRYPOINT ["/discord_utils"]
