@@ -2,6 +2,17 @@
 
 よりDiscordを便利に。
 
+## 起動方法
+
+```bash
+# 環境変数
+echo "DISCORD_TOKEN=Your-Discord-App-Token-Hire" > .env
+
+# 起動
+docker pull ghcr.io/kuraft/discord_utils:latest
+docker run --detach　--env-file .env --restart=always ghcr.io/kuraft/discord_utils:latest
+```
+
 ## 機能
 
 ### カテゴリの複製
