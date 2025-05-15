@@ -6,7 +6,7 @@
 
 ```bash
 # 環境変数
-echo "DISCORD_TOKEN=Your-Discord-App-Token-Hire" > .env
+echo "DISCORD_TOKEN=Your-Discord-App-Token-Here" > .env
 
 # 起動
 docker pull ghcr.io/kuraft/discord_utils:latest
